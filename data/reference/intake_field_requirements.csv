@@ -1,0 +1,16 @@
+﻿field_id,field_name,requirement_level,condition,why_needed,allowed_examples
+RF-001,primary_caregiver_name,REQUIRED,,Identifies the profile and review authority,Fictional full name
+RF-002,postal_code_or_zip,REQUIRED,,Sets the search market and distance,Synthetic postal/ZIP
+RF-003,preferred_search_radius,REQUIRED,,Defines acceptable distance,Default 10 km / 6 mi
+RF-004,child_birth_date_or_due_date,REQUIRED,,Determines age eligibility at start,One of birth date or due date
+RF-005,ideal_start_date,REQUIRED,,Determines timing and waitlist fit,Date
+RF-006,required_days,REQUIRED,,Determines schedule fit,Mon-Fri or selected days
+RF-007,required_hours,REQUIRED,,Determines operating-hours fit,Start and end times
+RF-008,childcare_preferences_question,REQUIRED,,The question must be asked early; caregiver may choose no strong preference,Multi-select or no strong preference
+RF-009,payment_methods,REQUIRED,,Prevents assumptions about subsidy or payment,Multi-select: private pay|eligible|pending|employer support|family support|unsure|other
+RF-010,allergies_or_sensitivities,CONDITIONAL,Required when caregiver answers yes,Determines mandatory provider accommodations,Peanut|dairy|egg|other
+RF-011,accommodation_or_support_needs,CONDITIONAL,Required when caregiver answers yes,Determines mandatory provider capabilities,Mobility|hearing|vision|developmental|autism|behavioural|medical|other
+RF-012,transportation_mode,CONDITIONAL,Required when commute constraints materially affect matching,Improves realistic distance ranking,Drive|transit|walk|flexible
+RF-013,flexibility_level,REQUIRED,,Controls whether near-matches or alternatives may be recommended,Must match exactly|some flexibility|open to alternatives
+RF-014,siblings,OPTIONAL,,Supports sibling placement and family-profile growth,Ages and current provider
+RF-015,caregiver_notes,OPTIONAL,,Allows relevant context without turning free text into an unsupported hard rule,Free text

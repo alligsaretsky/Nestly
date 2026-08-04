@@ -1,0 +1,13 @@
+﻿provider_type_id,provider_type_name,maps_to_childcare_type_id,licensing_category,structured_classroom,home_based,affiliation_type,typical_hours_profile,prototype_notes
+PT-COMM-CENTRE,Community Licensed Centre,CT-CENTRE,licensed,true,false,none,standard,Most common formal provider
+PT-MONT,Montessori Centre,CT-CENTRE,licensed,true,false,none,standard,Philosophy-driven structured classroom
+PT-REGGIO,Reggio Emilia Centre,CT-CENTRE,licensed,true,false,none,standard,Philosophy-driven structured classroom
+PT-WALDORF,Waldorf Early Learning Centre,CT-CENTRE,licensed,true,false,none,standard,Philosophy-driven structured classroom
+PT-INCLUSIVE,Inclusive / Support-Focused Centre,CT-CENTRE,licensed,true,false,none,standard,Synthetic verified support capabilities
+PT-EXTENDED,Extended-Hours Centre,CT-CENTRE,licensed,true,false,none,extended,Rare; operating schedule still checked
+PT-OVERNIGHT,Overnight Child Care Centre,CT-CENTRE,licensed,true,false,none,overnight,Exactly one synthetic New York City provider
+PT-FAMILY-LIC,Licensed Family Child Care,CT-FAMILY-LIC,licensed_or_registered,false,true,none,standard_or_flexible,Small-group home setting
+PT-FAMILY-UNREG,Private / Unregulated Home Care,CT-FAMILY-UNREG,unregulated_private,false,true,none,variable,Requires explicit status disclosure
+PT-EMPLOYER,Employer-Affiliated Centre,CT-EMPLOYER,licensed,true,false,employer,standard_or_extended,One synthetic provider
+PT-CAMPUS,Campus-Affiliated Centre,CT-CAMPUS,licensed,true,false,campus,standard,One synthetic provider
+PT-SCHOOL,Before & After School Program,CT-SCHOOL,licensed_or_registered,true,false,school,school_day_edges,School-age only

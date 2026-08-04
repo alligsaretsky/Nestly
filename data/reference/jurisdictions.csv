@@ -1,0 +1,11 @@
+﻿jurisdiction_id,jurisdiction_name,country_code,applies_to_market_ids,regulatory_context,subsidy_context,language_context,prototype_boundary
+JUR-QC,Quebec,CA,MKT-MTL|MKT-QBC,Licensed care must follow applicable provincial requirements,Caregiver supplies payment/support status; Nestly does not determine official eligibility,French-first communication; English available,Synthetic summary only; not legal advice
+JUR-PE,Prince Edward Island,CA,MKT-YYG,Licensed care follows applicable provincial requirements,Caregiver supplies payment/support status,English and French supported,Synthetic summary only; not legal advice
+JUR-ON,Ontario,CA,MKT-TOR,Licensed centre and home care follow applicable provincial rules,Caregiver supplies payment/support status; provider support acceptance is matched,English default,Synthetic summary only; not legal advice
+JUR-AB,Alberta,CA,MKT-YYC,Licensed care follows applicable provincial requirements,Caregiver supplies payment/support status,English default,Synthetic summary only; not legal advice
+JUR-DC,District of Columbia / Virginia Metro,US,MKT-DC,Providers follow applicable local licensing requirements,"Private pay, employer support or caregiver-stated assistance",English default,Synthetic summary only; not legal or benefits advice
+JUR-MA,Massachusetts,US,MKT-BOS,Providers follow applicable state licensing requirements,Private pay or caregiver-stated assistance,English default,Synthetic summary only
+JUR-CA,California,US,MKT-SFB,Providers follow applicable state licensing requirements,Private pay or caregiver-stated assistance,English default; translations on demand,Synthetic summary only
+JUR-NY,New York,US,MKT-NYC,Providers follow applicable state and city requirements,Private pay or caregiver-stated assistance,English default; translations on demand,Synthetic summary only
+JUR-IL,Illinois,US,MKT-CHI,Providers follow applicable state licensing requirements,Private pay or caregiver-stated assistance,English default,Synthetic summary only
+JUR-CDMX,Mexico City,MX,MKT-MEX,Providers use synthetic local registration and operating-rule fields,Private pay or caregiver-stated support,Spanish default,Synthetic summary only; not legal advice

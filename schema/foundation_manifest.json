@@ -1,0 +1,18 @@
+{
+  "version": "1.0",
+  "generated": "2026-07-31",
+  "repository": "https://github.com/alligsaretsky/Nestly.git",
+  "agents_cli_status": "pending_instructor_clarification",
+  "files": [
+    "Nestly_Foundation_Reference_Review_v1.xlsx",
+    "README.md",
+    "data/reference/childcare_types.csv",
+    "data/reference/communication_types.csv",
+    "data/reference/controlled_vocabularies.csv",
+    "data/reference/intake_field_requirements.csv",
+    "data/reference/jurisdictions.csv",
+    "data/reference/markets.csv",
+    "data/reference/provider_types.csv",
+    "docs/Nestly_Matching_and_Evaluation_Rules_v1.docx"
+  ]
+}

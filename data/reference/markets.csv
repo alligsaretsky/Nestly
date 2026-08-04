@@ -1,0 +1,12 @@
+﻿market_id,market_name,country_code,province_state,metro_components,currency_code,timezone,default_language_order,default_search_radius_km,notes
+MKT-MTL,Greater Montreal,CA,Quebec,Montreal|Laval|Longueuil|Terrebonne,CAD,America/Toronto,fr|en,10,French-first communication; metropolitan search
+MKT-QBC,Quebec City Metro,CA,Quebec,Quebec City|Sainte-Foy|Levis,CAD,America/Toronto,fr|en,10,French-first communication
+MKT-YYG,Charlottetown,CA,Prince Edward Island,Charlottetown|West Royalty|Stratford,CAD,America/Halifax,en|fr,15,English or French based on caregiver preference
+MKT-TOR,Greater Toronto,CA,Ontario,Toronto|North York|Scarborough|Etobicoke|Mississauga,CAD,America/Toronto,en,10,Long-waitlist market
+MKT-YYC,Calgary,CA,Alberta,Calgary|Beltline|Kensington|Brentwood,CAD,America/Edmonton,en,10,Growing metropolitan market
+MKT-DC,Washington DC Metro,US,District of Columbia / Virginia,Washington|Arlington|Alexandria,USD,America/New_York,en,6,Dense commuter market
+MKT-BOS,Boston Metro,US,Massachusetts,Boston|Cambridge|Somerville|Brookline,USD,America/New_York,en,6,"Healthcare, education and technology workforce"
+MKT-SFB,San Francisco Bay Area,US,California,San Francisco|San Jose|Palo Alto|Mountain View,USD,America/Los_Angeles,en,8,High-cost metropolitan market
+MKT-NYC,New York City,US,New York,Manhattan|Brooklyn|Queens|Bronx,USD,America/New_York,en,6,Includes one synthetic overnight provider
+MKT-CHI,Chicago,US,Illinois,Chicago,USD,America/Chicago,en,8,Midwestern comparison market
+MKT-MEX,Mexico City,MX,Ciudad de Mexico,Polanco|Condesa|Coyoacan,MXN,America/Mexico_City,es,10,Spanish-first provider communication

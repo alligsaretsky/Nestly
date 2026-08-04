@@ -1,0 +1,11 @@
+﻿communication_type_id,communication_type_name,audience,requires_human_approval_default,surface_rule,example
+COM-INQUIRY,Provider Inquiry,provider,true,Always surface before first send,Childcare inquiry with child age and desired start date
+COM-APPLICATION,Application Draft,caregiver,true,Surface when ready for review,Application ready for caregiver review
+COM-FOLLOWUP,Administrative Follow-up,provider,conditional,Surface if approval is required; may be autonomous only with prior consent,Request waitlist status on an already approved application
+COM-INFOREQ,Information Request,caregiver,false,Surface when required information blocks progress,Postal code is required before provider matching
+COM-WAITLIST,Waitlist Update,caregiver,false,Surface only for material changes or required action,Provider estimates a spot in 4-8 weeks
+COM-REMINDER,Reminder,caregiver,false,"One reminder after 7 days, then stay silent unless a deadline is at risk",Please add your required pickup time
+COM-OFFER,Offer Received,caregiver,true,Always surface and escalate for decision,A provider has offered a spot
+COM-DECISION,Decision Required,caregiver,true,Always surface,"Approve application, accept or decline offer"
+COM-STATUS,Status / Digest,caregiver,false,Surface only when meaningful; otherwise stay silent,2 items need review; everything else is on track
+COM-TRANSLATION,Translated Message,caregiver_or_provider,inherits,Surface with original facts preserved,"French, Spanish or other on-demand translation"

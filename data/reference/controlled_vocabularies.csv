@@ -1,0 +1,26 @@
+﻿vocabulary_name,value,caregiver_facing_label,definition
+notification_action,SURFACE,Show this update,The caregiver needs to act or a meaningful change affects options
+notification_action,STAY_SILENT,No notification,No meaningful action or decision is required
+notification_action,ESCALATE,Human review required,The agent must stop and flag the case for caregiver review
+confidence,HIGH,High confidence,Required data is present and one or more options satisfy all hard constraints
+confidence,MEDIUM,Medium confidence,"A defensible recommendation exists but there are trade-offs, ties or minor uncertainty"
+confidence,LOW,Low confidence,"Required information is missing, data is stale, or no option clearly satisfies hard constraints"
+information_requirement,REQUIRED,Required,Needed before specific provider matching or a consequential step
+information_requirement,CONDITIONAL,Required when applicable,"Needed only when the caregiver identifies an allergy, support, transport or other applicable need"
+information_requirement,OPTIONAL,Optional,Improves personalization but does not block matching
+application_status,DRAFT,Draft,Information is being prepared
+application_status,READY_FOR_REVIEW,Ready for review,Nestly prepared the draft; it is not approved or sent
+application_status,APPROVED_TO_SEND,Approved to send,The caregiver approved this exact version
+application_status,SUBMITTED,Submitted,The approved application was sent
+application_status,RECEIVED,Received,The provider confirmed receipt
+application_status,INCOMPLETE,Needs information,A required item is missing
+application_status,WAITLISTED,On the waitlist,The application is active but no spot is confirmed
+application_status,OFFER_RECEIVED,Spot offered,The caregiver must accept or decline
+application_status,ACCEPTED,Spot accepted,The caregiver accepted the offer
+application_status,DECLINED,Offer declined,The caregiver declined the offer
+space_status,SPOT_AVAILABLE,A spot is available now,Confirmed current space
+space_status,SPOT_EXPECTED,A spot is expected in the stated range,A quantified date or range is required
+space_status,WAITLIST_OPEN,Accepting waitlist applications,No current spot is implied
+space_status,WAITLIST_CLOSED,Not accepting new waitlist requests,Show the reason when known
+space_status,NO_SPOT_EXPECTED,No spot is expected at this time,Show the reason when known
+space_status,UNCONFIRMED,Space has not yet been confirmed,Provider information is missing or stale
