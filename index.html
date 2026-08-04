@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Nestly Childcare Navigation Demo</title>
+</head>
+
+<body>
+  <header>
+    <h1>Nestly</h1>
+    <p>
+      AI childcare navigation from family needs to a
+      caregiver-approved next step.
+    </p>
+  </header>
+
+  <main>
+    <section aria-labelledby="family-heading">
+      <h2 id="family-heading">1. Select a family</h2>
+
+      <label for="family-select">Demo family</label>
+
+      <select id="family-select" name="family">
+        <option value="">Choose a family</option>
+
+        <option value="f001">
+          Dr. Daniel Brooks — New York City
+        </option>
+
+        <option value="f002">
+          Emily and Michael Chen — Toronto
+        </option>
+      </select>
+
+      <button type="button" id="run-agent">
+        Run Nestly
+      </button>
+    </section>
+
+    <section aria-labelledby="intake-heading">
+      <h2 id="intake-heading">2. Caregiver intake summary</h2>
+
+      <div id="intake-panel">
+        <p>Select a family to view the caregiver profile.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="context-heading">
+      <h2 id="context-heading">3. Context used</h2>
+
+      <div id="context-panel">
+        <p>
+          Nestly will show the family, provider and policy
+          information used for the decision.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="decision-heading">
+      <h2 id="decision-heading">4. Decision and reasons</h2>
+
+      <div id="decision-panel">
+        <p>No recommendation has been generated yet.</p>
+      </div>
+    </section>
+
+    <section aria-labelledby="output-heading">
+      <h2 id="output-heading">5. Reviewable output</h2>
+
+      <div id="output-panel">
+        <p>
+          The recommendation, confidence, missing information
+          and next action will appear here.
+        </p>
+      </div>
+    </section>
+
+    <section aria-labelledby="approval-heading">
+      <h2 id="approval-heading">6. Human review</h2>
+
+      <button type="button" id="approve-button">
+        Approve
+      </button>
+
+      <button type="button" id="edit-button">
+        Edit
+      </button>
+
+      <button type="button" id="escalate-button">
+        Escalate
+      </button>
+    </section>
+
+    <section aria-labelledby="log-heading">
+      <h2 id="log-heading">7. Activity log</h2>
+
+      <ol id="activity-log">
+        <li>Prototype opened.</li>
+      </ol>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      Synthetic demonstration only. No real family or provider
+      information is used.
+    </p>
+  </footer>
+</body>
+</html>
