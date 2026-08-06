@@ -1,0 +1,33 @@
+﻿child_id,family_id,child_name,birth_or_due_date,care_stage,accommodation_or_support_needs,allergies_or_sensitivities,ideal_start_date
+C001,F001,Leo Brooks,2025-12-10,Infant,None,None,2026-09-01
+C002,F002,Ava Chen,2025-08-20,Infant,None,None,2026-09-15
+C003,F003,Mia Thompson,2025-10-05,Infant,None,None,2026-10-01
+C004,F004,Samir Haddad,2024-12-12,Toddler,None,None,2026-09-01
+C005,F005,Lily Martin,2022-11-03,Preschool,None,None,2026-09-01
+C006,F006,Émile Roy,2025-09-14,Infant,None,None,2026-09-01
+C007,F007,Sofia Walker,2025-10-01,Infant,None,None,2026-09-01
+C008,F007,Theo Walker,2025-10-01,Infant,None,None,2026-09-01
+C009,F008,Arjun Singh,2024-05-15,Toddler,None,None,2026-08-15
+C010,F009,Baby Green,2025-12-02,Infant,None,None,2026-10-01
+C011,F010,Lucía Rivera,2024-04-09,Toddler,None,None,2026-09-01
+C012,F011,Nina Patel,2025-11-22,Infant,None,None,2026-09-01
+C013,F012,Evan Wong,2022-09-30,Preschool,Autism support,None,2026-09-01
+C014,F013,Chloe Clarke,2024-06-17,Toddler,None,Peanut|Dairy,2026-09-01
+C015,F014,Mason Brown,2025-12-20,Infant,None,None,2026-11-01
+C016,F015,Anaya Nair,2025-10-02,Infant,None,None,2026-09-15
+C017,F016,Ella Wilson,2024-02-12,Toddler,None,None,2026-09-01
+C018,F017,Cole Peterson,2024-03-14,Toddler,None,None,2026-08-15
+C019,F018,Jack Roberts,2025-11-01,Infant,None,None,2026-08-25
+C020,F019,Baby Foster,2027-01-15,Expected child,None,None,2027-12-01
+C021,F020,Riley Scott,2025-02-10,Toddler transition,None,None,2026-08-10
+C022,F021,Finn Adams,2022-08-16,Preschool,None,None,2026-09-01
+C023,F022,Sophie Kim,2024-03-08,Toddler,None,None,2026-09-01
+C024,F023,Youssef Hassan,2025-09-01,Infant,None,None,2026-09-15
+C025,F024,Claire White,2024-01-11,Toddler,None,None,2026-09-01
+C026,F025,Henry Moore,2024-06-06,Toddler,None,None,2026-09-01
+C027,F026,Lena Hill,2025-10-30,Infant,None,None,2026-10-15
+C028,F027,Baby Young,2027-02-01,Expected child,None,None,2028-01-01
+C029,F028,Owen Foster,2025-09-09,Infant,None,None,2026-09-01
+C030,F029,Zoe Evans,2024-05-01,Toddler,None,None,2026-08-15
+C031,F030,Mila Chen,2025-09-25,Infant,None,None,2026-09-15
+C032,F031,Kai Lee,2025-07-10,Infant,None,None,2026-08-20

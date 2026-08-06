@@ -1,0 +1,34 @@
+﻿provider_id,provider_name,market,care_type,licensing_status,operating_hours,ages_served,languages,payment_methods_accepted,supports,notes
+P001,Harbour Lights Overnight Childcare,New York City,Licensed Childcare Centre,Licensed,24 hours,6-60 months,English|Spanish,Parent Pay|Employer Assistance,Allergy plans|Medication administration,Synthetic overnight centre; limited overnight spaces
+P002,Hudson Home Nanny Collective,New York City,In-Home Caregiver,Registered agency,Flexible/overnight,0-144 months,English|Spanish|French,Parent Pay|Employer Assistance,Individualized care|Rotating schedules,Synthetic placement agency
+P003,Manhattan Children’s Learning Centre,New York City,Licensed Childcare Centre,Licensed,07:30-18:30,6-60 months,English|Spanish,Parent Pay|Employer Assistance,Allergy plans,Structured centre; standard hours
+P004,Brooklyn Extended Care House,New York City,Licensed Family Childcare Home,Licensed,06:30-21:00,6-60 months,English|Spanish,Parent Pay|Subsidy,Flexible pickup|Allergy plans,Small licensed home; evening coverage
+P005,Maple Steps Early Learning Centre,Toronto,Licensed Childcare Centre,Licensed,07:00-18:30,6-60 months,English,Parent Pay|Subsidy Pending|Subsidy Approved,Allergy plans|Mobility access,Short synthetic infant waitlist
+P006,Toronto General Workplace Childcare,Toronto,Employer / Campus Childcare Centre,Licensed,06:30-19:00,6-60 months,English|French,Parent Pay|Employer Assistance,Allergy plans|Extended hours,Employer-affiliated; staff eligibility required
+P007,Little Cedar Family Childcare,Toronto,Licensed Family Childcare Home,Licensed,07:00-18:00,6-60 months,English|Tagalog,Parent Pay|Subsidy,Small group|Sibling priority,Neighbourhood licensed home
+P008,Bright Path Inclusion Centre,Toronto,Licensed Childcare Centre,Licensed,07:30-18:00,12-60 months,English|French,Parent Pay|Subsidy,Autism support|Hearing support|Mobility access,Inclusive synthetic centre
+P009,Riverside Private Home Care,Toronto,Unlicensed Family Childcare Home,Unlicensed,07:00-19:00,12-60 months,English,Parent Pay,Flexible hours,Only eligible if caregiver explicitly opts in
+P010,Future Start Early Learning Centre,Toronto,Licensed Childcare Centre,Licensed,07:00-18:00,6-60 months,English,Parent Pay|Subsidy,Future enrolment waitlist,Accepts applications during pregnancy
+P011,Jardin des Petits Bilingue,Greater Montreal,Licensed Childcare Centre,Licensed,07:00-18:00,6-60 months,French|English,Parent Pay|Subsidy,Newcomer onboarding|Allergy plans,French-first communication with English support
+P012,Maison Soleil Familiale,Greater Montreal,Licensed Family Childcare Home,Licensed,06:30-18:30,6-60 months,French|Arabic,Parent Pay|Subsidy,Small group|Flexible pickup,Licensed home in Laval
+P013,Centre Élan Inclusif,Greater Montreal,Licensed Childcare Centre,Licensed,07:30-18:00,12-60 months,French|English,Parent Pay|Subsidy,Autism support|Hearing support,Specialized support capacity
+P014,Campus des Familles Montréal,Greater Montreal,Employer / Campus Childcare Centre,Licensed,07:30-18:00,6-60 months,French|English,Parent Pay|Employer Assistance,Student/staff eligibility,University affiliation required
+P015,Les Explorateurs de Québec,Quebec City Metro,Licensed Childcare Centre,Licensed,07:00-18:00,6-60 months,French|English,Parent Pay|Subsidy,Allergy plans|Outdoor learning,French-first centre
+P016,Petite Maison Lévis,Quebec City Metro,Licensed Family Childcare Home,Licensed,06:45-17:45,6-60 months,French,Parent Pay|Subsidy,Small group,Neighbourhood home care
+P017,Island Sprouts Early Learning,Charlottetown,Licensed Childcare Centre,Licensed,07:00-18:00,6-60 months,English|French,Parent Pay|Subsidy,Allergy plans,Bilingual synthetic centre
+P018,Harbour Home Childcare,Charlottetown,Licensed Family Childcare Home,Licensed,07:00-17:30,6-60 months,English,Parent Pay|Subsidy,Small group,Neighbourhood licensed home
+P019,Prairie Sky Early Learning,Calgary,Licensed Childcare Centre,Licensed,06:30-18:30,6-60 months,English,Parent Pay|Subsidy,Twin placement|Allergy plans,Can place two siblings together
+P020,Bow River Family Day Home,Calgary,Licensed Family Childcare Home,Licensed,06:30-18:00,6-60 months,English|Punjabi,Parent Pay|Subsidy,Small group|Flexible days,Registered/licensed family home
+P021,Calgary Caregiver Network,Calgary,In-Home Caregiver,Registered agency,Flexible/overnight,0-144 months,English|French|Punjabi,Parent Pay,Individualized care|Rotating schedules,Synthetic nanny placement
+P022,Seaside Learning Centre,Boston Metro,Licensed Childcare Centre,Licensed,07:00-18:30,6-60 months,English|Spanish,Parent Pay|Employer Assistance,Allergy plans,Metro centre
+P023,Beacon Hill Home Childcare,Boston Metro,Licensed Family Childcare Home,Licensed,07:00-18:00,6-60 months,English|Spanish,Parent Pay,Small group,Licensed home care
+P024,Capitol Early Learning Centre,Washington DC Metro,Licensed Childcare Centre,Licensed,06:30-18:30,6-60 months,English|Spanish,Parent Pay|Employer Assistance,Allergy plans,Professional workforce focus
+P025,Potomac Nanny Cooperative,Washington DC Metro,In-Home Caregiver,Registered agency,Flexible,0-144 months,English|Spanish|French,Parent Pay,Individualized care,Synthetic caregiver cooperative
+P026,Bayview Montessori Centre,San Francisco Bay Area,Licensed Childcare Centre,Licensed,07:30-18:00,12-60 months,English|Spanish,Parent Pay|Employer Assistance,Allergy plans,Montessori philosophy
+P027,Mission Family Childcare,San Francisco Bay Area,Licensed Family Childcare Home,Licensed,07:00-18:30,6-60 months,English|Spanish,Parent Pay,Vegetarian meals|Outdoor play,Small home setting
+P028,Silicon Valley Care at Home,San Francisco Bay Area,In-Home Caregiver,Registered agency,Flexible,0-144 months,English|Spanish|Mandarin,Parent Pay|Employer Assistance,Individualized care,High-cost in-home option
+P029,Lakefront Early Learning,Chicago,Licensed Childcare Centre,Licensed,07:00-18:00,6-60 months,English|Spanish,Parent Pay|Subsidy,Allergy plans,Synthetic Chicago centre
+P030,Casa Arcoíris Infantil,Mexico City,Licensed Childcare Centre,Registered,07:00-19:00,6-60 months,Spanish|English,Parent Pay|Family Support,Allergy plans|Outdoor learning,Spanish-first centre
+P031,Hogar Pequeños Pasos,Mexico City,Licensed Family Childcare Home,Registered,07:00-18:30,6-60 months,Spanish,Parent Pay|Family Support,Small group,Registered home care
+P032,Cuidados en Casa CDMX,Mexico City,In-Home Caregiver,Registered agency,Flexible,0-144 months,Spanish|English,Parent Pay|Family Support,Individualized care,Synthetic nanny agency
+P033,Rainbow School-Age Club,Toronto,School-Affiliated Before & After School Care,Licensed/registered,07:00-09:00|15:00-18:30,48-144 months,English|French,Parent Pay|Subsidy,School affiliation,School-aged only
