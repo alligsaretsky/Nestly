@@ -9,14 +9,229 @@
   >
 
   <title>Nestly Childcare Navigation Demo</title>
+
+  <style>
+    :root {
+      color-scheme: light;
+      --background: #f4f7f5;
+      --surface: #ffffff;
+      --text: #24332d;
+      --muted: #5e6f67;
+      --border: #d7e1dc;
+      --accent: #2f6b57;
+      --accent-dark: #235141;
+      --soft-accent: #e7f1ed;
+      --warning: #7b5b20;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--background);
+      color: var(--text);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      font-size: 1rem;
+      line-height: 1.55;
+    }
+
+    header,
+    main,
+    footer {
+      width: min(900px, calc(100% - 2rem));
+      margin-inline: auto;
+    }
+
+    header {
+      padding: 3rem 0 1.5rem;
+    }
+
+    header h1 {
+      margin: 0;
+      color: var(--accent-dark);
+      font-size: clamp(2rem, 6vw, 3rem);
+      letter-spacing: -0.03em;
+    }
+
+    header p,
+    footer p {
+      max-width: 60ch;
+      color: var(--muted);
+    }
+
+    main {
+      display: grid;
+      gap: 1rem;
+    }
+
+    section {
+      padding: 1.4rem;
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      background: var(--surface);
+      box-shadow: 0 0.2rem 0.8rem rgba(36, 51, 45, 0.04);
+    }
+
+    h2 {
+      margin: 0 0 1rem;
+      font-size: 1.2rem;
+    }
+
+    h3 {
+      margin: 1rem 0 0.35rem;
+      font-size: 1rem;
+    }
+
+    p,
+    ul,
+    dl {
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    dl {
+      display: grid;
+      grid-template-columns: minmax(9rem, 0.35fr) 1fr;
+      gap: 0.55rem 1rem;
+    }
+
+    dt {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    dd {
+      margin: 0;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 0.4rem;
+      font-weight: 650;
+    }
+
+    select,
+    textarea,
+    button {
+      font: inherit;
+    }
+
+    select,
+    textarea {
+      width: 100%;
+      padding: 0.7rem 0.8rem;
+      border: 1px solid #a9b9b1;
+      border-radius: 0.4rem;
+      background: #fff;
+      color: var(--text);
+    }
+
+    select {
+      max-width: 32rem;
+      margin-right: 0.5rem;
+    }
+
+    textarea {
+      min-height: 6rem;
+      resize: vertical;
+    }
+
+    button {
+      margin: 0.65rem 0.35rem 0 0;
+      padding: 0.65rem 1rem;
+      border: 1px solid var(--accent);
+      border-radius: 0.4rem;
+      background: var(--accent);
+      color: #fff;
+      cursor: pointer;
+      font-weight: 650;
+    }
+
+    button:hover:not(:disabled) {
+      background: var(--accent-dark);
+    }
+
+    button:focus-visible,
+    select:focus-visible,
+    textarea:focus-visible {
+      outline: 3px solid #9cc9b8;
+      outline-offset: 2px;
+    }
+
+    button:disabled {
+      cursor: not-allowed;
+      opacity: 0.45;
+    }
+
+    #request-review-button,
+    #cancel-edit {
+      background: #fff;
+      color: var(--accent-dark);
+    }
+
+    #review-request-form {
+      margin-top: 1rem;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      background: var(--soft-accent);
+    }
+
+    .notice {
+      padding: 0.75rem 0.9rem;
+      border-left: 4px solid var(--accent);
+      background: var(--soft-accent);
+    }
+
+    .review-grid {
+      grid-template-columns: minmax(10rem, 0.4fr) 1fr;
+    }
+
+    #activity-log {
+      padding-left: 1.5rem;
+    }
+
+    #activity-log li {
+      margin-bottom: 0.4rem;
+    }
+
+    time {
+      color: var(--muted);
+      font-variant-numeric: tabular-nums;
+    }
+
+    footer {
+      padding: 1rem 0 2.5rem;
+    }
+
+    @media (max-width: 600px) {
+      header {
+        padding-top: 2rem;
+      }
+
+      section {
+        padding: 1.1rem;
+      }
+
+      dl,
+      .review-grid {
+        grid-template-columns: 1fr;
+        gap: 0.1rem;
+      }
+
+      dd {
+        margin-bottom: 0.65rem;
+      }
+    }
+  </style>
 </head>
 
 <body>
   <header>
     <h1>Nestly</h1>
     <p>
-      AI childcare navigation from family needs to a
-      caregiver-approved next step.
+      Childcare navigation based on your family’s needs.
     </p>
   </header>
 
@@ -46,7 +261,7 @@
     <section aria-labelledby="intake-heading">
       <h2 id="intake-heading">2. Caregiver intake summary</h2>
 
-      <div id="intake-panel">
+      <div id="intake-panel" aria-live="polite">
         <p>Select a family to view the caregiver profile.</p>
       </div>
     </section>
@@ -54,7 +269,7 @@
     <section aria-labelledby="context-heading">
       <h2 id="context-heading">3. Context used</h2>
 
-      <div id="context-panel">
+      <div id="context-panel" aria-live="polite">
         <p>
           Nestly will show the family, provider and policy
           information used for the decision.
@@ -65,15 +280,15 @@
     <section aria-labelledby="decision-heading">
       <h2 id="decision-heading">4. Decision and reasons</h2>
 
-      <div id="decision-panel">
+      <div id="decision-panel" aria-live="polite">
         <p>No recommendation has been generated yet.</p>
       </div>
     </section>
 
     <section aria-labelledby="output-heading">
-      <h2 id="output-heading">5. Reviewable output</h2>
+      <h2 id="output-heading">Reviewable output</h2>
 
-      <div id="output-panel">
+      <div id="output-panel" aria-live="polite">
         <p>
           The recommendation, confidence, missing information
           and next action will appear here.
@@ -82,27 +297,37 @@
     </section>
 
     <section aria-labelledby="approval-heading">
-      <h2 id="approval-heading">6. Human review</h2>
+      <h2 id="approval-heading">Caregiver Review</h2>
 
-      <button type="button" id="approve-button">
+      <p class="notice">
+        These controls record the caregiver's review only. They do not
+        submit applications, contact providers, or accept offers.
+      </p>
+
+      <button type="button" id="approve-button" disabled>
         Approve
       </button>
 
-      <button type="button" id="edit-button">
-        Edit
+      <button type="button" id="request-review-button" disabled>
+        Request Review
       </button>
 
-      <button type="button" id="escalate-button">
-        Escalate
-      </button>
+      <form id="review-request-form" hidden>
+        <label for="review-note">Caregiver note (optional)</label>
+        <textarea
+          id="review-note"
+          maxlength="300"
+          placeholder="Add a short correction or consideration."
+        ></textarea>
+        <button type="submit">Submit review request</button>
+        <button type="button" id="cancel-edit">Cancel</button>
+      </form>
     </section>
 
     <section aria-labelledby="log-heading">
-      <h2 id="log-heading">7. Activity log</h2>
+      <h2 id="log-heading">Activity Log</h2>
 
-      <ol id="activity-log">
-        <li>Prototype opened.</li>
-      </ol>
+      <ol id="activity-log" aria-live="polite"></ol>
     </section>
   </main>
 
@@ -112,5 +337,198 @@
       information is used.
     </p>
   </footer>
+
+  <script>
+    const families = {
+      f001: {
+        id: "F001",
+        name: "Dr. Daniel Brooks",
+        market: "New York City",
+        household: "Single gay father by adoption, one child",
+        occupation: "Pediatric surgeon",
+        schedule: "Rotating hospital shifts, including days, evenings, and overnight call",
+        careNeed: "Approximately 6:00 AM–9:00 PM, with occasional overnight coverage",
+        paymentMethods: "Parent Pay; Employer Support",
+        recommendation: "In-Home Caregiver",
+        secondaryOption: "Employer/Campus Childcare Centre or a licensed extended-hours/overnight centre, when eligible",
+        reason: "Standard childcare-centre hours do not reliably cover his rotating hospital schedule.",
+        confidence: "High",
+        missingInformation: "Exact weekly shift pattern, overnight frequency, budget, and backup-care preferences.",
+        nextAction: "Review and confirm whether the recommended care type fits the family's priorities.",
+        rules: [
+          "Treat schedule coverage as a hard constraint.",
+          "Allow hard constraints to override the default recommendation hierarchy.",
+          "Keep centre-based extended-hours care as a secondary option when eligible."
+        ]
+      },
+      f002: {
+        id: "F002",
+        name: "Emily and Michael Chen",
+        market: "Toronto",
+        household: "First-time parents",
+        schedule: "Standard weekday professional schedules",
+        careNeed: "Monday–Friday, approximately 8:00 AM–6:00 PM",
+        idealStartDate: "September 15, 2026",
+        paymentMethods: "Parent Pay; Subsidy Application Pending",
+        recommendation: "Licensed Childcare Centre",
+        reason: "They need regular weekday infant care close to home before returning to work.",
+        confidence: "High",
+        missingInformation: "Child's age at start, preferred travel radius, budget, and subsidy eligibility outcome.",
+        nextAction: "Review and confirm the care requirements and ideal start date.",
+        rules: [
+          "Use the approved hierarchy when no hard constraint requires an override.",
+          "Prioritize licensed centre care for regular weekday schedules.",
+          "Account for the requested start date and care close to home."
+        ]
+      }
+    };
+
+    const familySelect = document.querySelector("#family-select");
+    const runButton = document.querySelector("#run-agent");
+    const intakePanel = document.querySelector("#intake-panel");
+    const contextPanel = document.querySelector("#context-panel");
+    const decisionPanel = document.querySelector("#decision-panel");
+    const outputPanel = document.querySelector("#output-panel");
+    const approveButton = document.querySelector("#approve-button");
+    const requestReviewButton = document.querySelector("#request-review-button");
+    const reviewRequestForm = document.querySelector("#review-request-form");
+    const reviewNote = document.querySelector("#review-note");
+    const cancelEditButton = document.querySelector("#cancel-edit");
+    const activityLog = document.querySelector("#activity-log");
+    let activeRecommendation = null;
+
+    function addLogEntry(message) {
+      const now = new Date();
+      const item = document.createElement("li");
+      const time = document.createElement("time");
+      time.dateTime = now.toISOString();
+      time.textContent = now.toLocaleString([], {
+        dateStyle: "medium",
+        timeStyle: "short"
+      });
+      item.append(time, document.createTextNode(` — ${message}`));
+      activityLog.append(item);
+    }
+
+    function setReviewEnabled(enabled) {
+      approveButton.disabled = !enabled;
+      requestReviewButton.disabled = !enabled;
+    }
+
+    function resetRecommendation() {
+      activeRecommendation = null;
+      contextPanel.innerHTML = "<p>Nestly will show the relevant family facts and matching rules used for the decision.</p>";
+      decisionPanel.innerHTML = "<p>No recommendation has been generated yet.</p>";
+      outputPanel.innerHTML = "<p>The recommendation, confidence, missing information and next action will appear here.</p>";
+      reviewRequestForm.hidden = true;
+      reviewNote.value = "";
+      setReviewEnabled(false);
+    }
+
+    function renderIntake(family) {
+      const occupation = family.occupation
+        ? `<dt>Occupation</dt><dd>${family.occupation}</dd>`
+        : "";
+      const startDate = family.idealStartDate
+        ? `<dt>Ideal start date</dt><dd>${family.idealStartDate}</dd>`
+        : "";
+      const secondary = family.secondaryOption
+        ? `<dt>Secondary option</dt><dd>${family.secondaryOption}</dd>`
+        : "";
+
+      intakePanel.innerHTML = `
+        <dl>
+          <dt>Family</dt><dd>${family.id} — ${family.name}</dd>
+          <dt>Market</dt><dd>${family.market}</dd>
+          <dt>Household</dt><dd>${family.household}</dd>
+          ${occupation}
+          <dt>Schedule</dt><dd>${family.schedule}</dd>
+          <dt>Care need</dt><dd>${family.careNeed}</dd>
+          ${startDate}
+          <dt>Payment methods</dt><dd>${family.paymentMethods}</dd>
+          ${secondary}
+        </dl>`;
+    }
+
+    familySelect.addEventListener("change", () => {
+      const family = families[familySelect.value];
+      if (family) {
+        renderIntake(family);
+      } else {
+        intakePanel.innerHTML = "<p>Select a family to view the caregiver profile.</p>";
+      }
+      resetRecommendation();
+    });
+
+    runButton.addEventListener("click", () => {
+      const family = families[familySelect.value];
+      if (!family) {
+        intakePanel.innerHTML = '<p class="notice">Choose a demo family before running Nestly.</p>';
+        familySelect.focus();
+        return;
+      }
+
+      activeRecommendation = family;
+      contextPanel.innerHTML = `
+        <h3>Relevant family facts</h3>
+        <ul>
+          <li>${family.market}; ${family.household}.</li>
+          <li>${family.schedule}.</li>
+          <li>Care needed ${family.careNeed.toLowerCase()}.</li>
+          <li>Payment methods: ${family.paymentMethods}.</li>
+        </ul>
+        <h3>Matching rules used</h3>
+        <ul>${family.rules.map((rule) => `<li>${rule}</li>`).join("")}</ul>`;
+
+      decisionPanel.innerHTML = `
+        <dl>
+          <dt>Recommendation</dt><dd><strong>${family.recommendation}</strong></dd>
+          <dt>Reason</dt><dd>${family.reason}</dd>
+          <dt>Confidence</dt><dd>${family.confidence}</dd>
+        </dl>`;
+
+      outputPanel.innerHTML = `
+        <dl class="review-grid">
+          <dt>Current status</dt><dd>Recommendation ready for caregiver review</dd>
+          <dt>Recommended care</dt><dd><strong>${family.recommendation}</strong></dd>
+          <dt>Why</dt><dd>${family.reason}</dd>
+          <dt>Missing information</dt><dd>${family.missingInformation}</dd>
+          <dt>Confidence</dt><dd>${family.confidence}</dd>
+          <dt>One next action</dt><dd>${family.nextAction}</dd>
+          <dt>Human approval required</dt><dd>Yes — caregiver approval is required before any consequential action.</dd>
+        </dl>`;
+
+      reviewRequestForm.hidden = true;
+      reviewNote.value = "";
+      setReviewEnabled(true);
+      addLogEntry(`Recommendation generated for ${family.id} (${family.name}).`);
+    });
+
+    approveButton.addEventListener("click", () => {
+      addLogEntry(`Caregiver approved the ${activeRecommendation.recommendation} recommendation for ${activeRecommendation.id}. No external action was taken.`);
+    });
+
+    requestReviewButton.addEventListener("click", () => {
+      reviewRequestForm.hidden = false;
+      reviewNote.focus();
+    });
+
+    reviewRequestForm.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const note = reviewNote.value.trim();
+      const noteText = note ? ` Caregiver note: ${note}` : "";
+      addLogEntry(`Human review requested for ${activeRecommendation.id}.${noteText}`);
+      reviewNote.value = "";
+      reviewRequestForm.hidden = true;
+    });
+
+    cancelEditButton.addEventListener("click", () => {
+      reviewNote.value = "";
+      reviewRequestForm.hidden = true;
+      requestReviewButton.focus();
+    });
+
+    addLogEntry("Prototype opened.");
+  </script>
 </body>
 </html>
