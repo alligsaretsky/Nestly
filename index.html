@@ -188,6 +188,36 @@
       grid-template-columns: minmax(10rem, 0.4fr) 1fr;
     }
 
+    .care-recommendation {
+      padding: 0.9rem 1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: 0.35rem;
+      background: var(--soft-accent);
+      font-size: 1.1rem;
+    }
+
+    .provider-list {
+      display: grid;
+      gap: 0.75rem;
+      padding-left: 1.75rem;
+    }
+
+    .provider-list li {
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+    }
+
+    .provider-list h4 {
+      margin: 0;
+      font-size: 1rem;
+    }
+
+    .provider-location {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
     #activity-log {
       padding-left: 1.5rem;
     }
@@ -286,12 +316,11 @@
     </section>
 
     <section aria-labelledby="output-heading">
-      <h2 id="output-heading">Reviewable output</h2>
+      <h2 id="output-heading">Provider Recommendations</h2>
 
       <div id="output-panel" aria-live="polite">
         <p>
-          The recommendation, confidence, missing information
-          and next action will appear here.
+          Recommended care and ranked provider matches will appear here.
         </p>
       </div>
     </section>
@@ -344,7 +373,7 @@
         id: "F001",
         name: "Dr. Daniel Brooks",
         market: "New York City",
-        household: "Single gay father by adoption, one child",
+        household: "Single father by adoption, one child",
         occupation: "Pediatric surgeon",
         schedule: "Rotating hospital shifts, including days, evenings, and overnight call",
         careNeed: "Approximately 6:00 AM–9:00 PM, with occasional overnight coverage",
@@ -355,6 +384,19 @@
         confidence: "High",
         missingInformation: "Exact weekly shift pattern, overnight frequency, budget, and backup-care preferences.",
         nextAction: "Review and confirm whether the recommended care type fits the family's priorities.",
+        providerWhy: "In-home care best addresses Daniel’s hard schedule constraint, while these providers offer the strongest approved flexible or overnight coverage options.",
+        providers: [
+          {
+            name: "Hudson Home Nanny Collective",
+            location: "New York City",
+            reason: "Flexible and overnight in-home support aligns with rotating early mornings, evenings, and occasional overnight call."
+          },
+          {
+            name: "Harbour Lights Overnight Childcare",
+            location: "New York City",
+            reason: "Its 24-hour licensed care may support extended-hours or overnight needs as a secondary option to in-home care."
+          }
+        ],
         rules: [
           "Treat schedule coverage as a hard constraint.",
           "Allow hard constraints to override the default recommendation hierarchy.",
@@ -375,6 +417,19 @@
         confidence: "High",
         missingInformation: "Child's age at start, preferred travel radius, budget, and subsidy eligibility outcome.",
         nextAction: "Review and confirm the care requirements and ideal start date.",
+        providerWhy: "Licensed centre care fits the Chens’ regular weekday schedule, and these Toronto providers are the strongest approved matches for their hours and payment needs.",
+        providers: [
+          {
+            name: "Maple Steps Early Learning Centre",
+            location: "Toronto",
+            reason: "Its 7:00 AM–6:30 PM hours cover the family’s weekday schedule and it supports Parent Pay and subsidy-pending families."
+          },
+          {
+            name: "Bright Path Inclusion Centre",
+            location: "Toronto",
+            reason: "Its weekday hours and payment options align, with the child’s age eligibility still needing confirmation."
+          }
+        ],
         rules: [
           "Use the approved hierarchy when no hard constraint requires an override.",
           "Prioritize licensed centre care for regular weekday schedules.",
@@ -419,7 +474,7 @@
       activeRecommendation = null;
       contextPanel.innerHTML = "<p>Nestly will show the relevant family facts and matching rules used for the decision.</p>";
       decisionPanel.innerHTML = "<p>No recommendation has been generated yet.</p>";
-      outputPanel.innerHTML = "<p>The recommendation, confidence, missing information and next action will appear here.</p>";
+      outputPanel.innerHTML = "<p>Recommended care and ranked provider matches will appear here.</p>";
       reviewRequestForm.hidden = true;
       reviewNote.value = "";
       setReviewEnabled(false);
@@ -488,15 +543,19 @@
         </dl>`;
 
       outputPanel.innerHTML = `
-        <dl class="review-grid">
-          <dt>Current status</dt><dd>Recommendation ready for caregiver review</dd>
-          <dt>Recommended care</dt><dd><strong>${family.recommendation}</strong></dd>
-          <dt>Why</dt><dd>${family.reason}</dd>
-          <dt>Missing information</dt><dd>${family.missingInformation}</dd>
-          <dt>Confidence</dt><dd>${family.confidence}</dd>
-          <dt>One next action</dt><dd>${family.nextAction}</dd>
-          <dt>Human approval required</dt><dd>Yes — caregiver approval is required before any consequential action.</dd>
-        </dl>`;
+        <h3>Recommended Care</h3>
+        <p class="care-recommendation"><strong>${family.recommendation}</strong></p>
+        <h3>Recommended Providers</h3>
+        <ol class="provider-list">
+          ${family.providers.map((provider) => `
+            <li>
+              <h4>${provider.name}</h4>
+              <p class="provider-location">Location: ${provider.location}</p>
+              <p>${provider.reason}</p>
+            </li>`).join("")}
+        </ol>
+        <h3>Caregiver Review Required</h3>
+        <p>Review these provider recommendations and approve or request review before Nestly continues.</p>`;
 
       reviewRequestForm.hidden = true;
       reviewNote.value = "";
