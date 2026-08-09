@@ -312,6 +312,156 @@
       background: #fbfcfb;
     }
 
+    section[aria-labelledby="evaluation-heading"] {
+      margin-top: 1.75rem;
+      border-style: dashed;
+      background: #f8faf9;
+      box-shadow: none;
+    }
+
+    section[aria-labelledby="evaluation-heading"] > p {
+      max-width: 68ch;
+      color: var(--muted);
+    }
+
+    #evaluation-content {
+      margin-top: 1.4rem;
+      padding-top: 1.4rem;
+      border-top: 1px solid var(--border);
+    }
+
+    #evaluation-content[hidden] {
+      display: none;
+    }
+
+    .evaluation-controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: end;
+    }
+
+    .evaluation-controls > div {
+      flex: 1 1 24rem;
+    }
+
+    .evaluation-controls select {
+      max-width: none;
+      margin: 0;
+    }
+
+    .evaluation-summary {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.65rem;
+      margin: 1.4rem 0 1rem;
+    }
+
+    .summary-item {
+      padding: 0.75rem 0.9rem;
+      border: 1px solid var(--border);
+      border-radius: 0.65rem;
+      background: var(--surface);
+      text-align: center;
+    }
+
+    .summary-item strong {
+      display: block;
+      color: var(--accent-dark);
+      font-size: 1.35rem;
+    }
+
+    .evaluation-status-list {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem;
+      padding: 0;
+      list-style: none;
+    }
+
+    .evaluation-status-list li {
+      display: flex;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.55rem 0.7rem;
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      background: var(--surface);
+      font-size: 0.9rem;
+    }
+
+    .status-label,
+    .verdict-label {
+      display: inline-block;
+      padding: 0.2rem 0.55rem;
+      border-radius: 999px;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.03em;
+    }
+
+    .status-not-run {
+      background: #edf1ef;
+      color: var(--muted);
+    }
+
+    .status-pass,
+    .verdict-pass {
+      background: var(--soft-accent);
+      color: var(--accent-dark);
+    }
+
+    .status-fail,
+    .verdict-fail {
+      background: var(--coral-soft);
+      color: var(--coral-dark);
+    }
+
+    #evaluation-result {
+      margin-top: 1.4rem;
+    }
+
+    .evaluation-scenario {
+      padding: 0.85rem 1rem;
+      border-left: 4px solid var(--accent);
+      border-radius: 0.4rem;
+      background: var(--soft-accent);
+    }
+
+    .evaluation-comparison {
+      display: grid;
+      grid-template-columns: 1fr 1fr minmax(10rem, 0.55fr);
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+
+    .evaluation-card {
+      padding: 1rem;
+      border: 1px solid var(--border);
+      border-radius: 0.7rem;
+      background: var(--surface);
+    }
+
+    .evaluation-card h4 {
+      margin: 0 0 0.55rem;
+      color: var(--accent-dark);
+      font-size: 1rem;
+    }
+
+    .evaluation-card p,
+    .evaluation-card ul {
+      font-size: 0.95rem;
+    }
+
+    .evaluation-checks {
+      padding-left: 1.2rem;
+    }
+
+    .evaluation-checks li {
+      margin-bottom: 0.35rem;
+    }
+
     #activity-log {
       padding-left: 1.5rem;
     }
@@ -357,6 +507,12 @@
       .provider-list li::before {
         top: 0.9rem;
         left: 0.85rem;
+      }
+
+      .evaluation-summary,
+      .evaluation-status-list,
+      .evaluation-comparison {
+        grid-template-columns: 1fr;
       }
     }
   </style>
@@ -463,6 +619,58 @@
 
       <ol id="activity-log" aria-live="polite"></ol>
     </section>
+
+    <section aria-labelledby="evaluation-heading">
+      <h2 id="evaluation-heading">Evaluation Mode</h2>
+
+      <p>
+        Run predefined capstone scenarios separately from the caregiver demo.
+        Evaluation runs do not perform external actions or alter the normal demo.
+      </p>
+
+      <button
+        type="button"
+        id="toggle-evaluation"
+        aria-expanded="false"
+        aria-controls="evaluation-content"
+      >
+        Show Evaluation Mode
+      </button>
+
+      <div id="evaluation-content" hidden>
+        <div class="evaluation-controls">
+          <div>
+            <label for="evaluation-select">Evaluation scenario</label>
+            <select id="evaluation-select" name="evaluation">
+              <option value="">Choose a scenario</option>
+              <option value="EVAL001">EVAL001 — Happy Path</option>
+              <option value="EVAL002">EVAL002 — Missing Information</option>
+              <option value="EVAL003">EVAL003 — Policy Conflict</option>
+              <option value="EVAL004">EVAL004 — Quiet Week</option>
+              <option value="EVAL005">EVAL005 — Explicit Approval Enables Next Step</option>
+              <option value="EVAL006">EVAL006 — Offer Requires Caregiver Decision</option>
+            </select>
+          </div>
+
+          <button type="button" id="run-evaluation" disabled>
+            Run Evaluation
+          </button>
+        </div>
+
+        <div class="evaluation-summary" aria-label="Evaluation summary">
+          <div class="summary-item">Total scenarios<strong>6</strong></div>
+          <div class="summary-item">Passed<strong id="passed-count">0</strong></div>
+          <div class="summary-item">Failed<strong id="failed-count">0</strong></div>
+        </div>
+
+        <h3>Scenario status</h3>
+        <ul id="evaluation-status-list" class="evaluation-status-list"></ul>
+
+        <div id="evaluation-result" aria-live="polite">
+          <p>Select and run a scenario to compare expected and actual behavior.</p>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
@@ -543,6 +751,52 @@
       }
     };
 
+    const evaluationOffer = {
+      provider: "Hudson Home Nanny Collective",
+      proposedStartDate: "October 5, 2026",
+      coverage: "flexible early-morning, evening, and overnight-call coverage aligned with Daniel’s rotating hospital schedule",
+      status: "Offer received — caregiver decision required"
+    };
+
+    const evaluationCases = {
+      EVAL001: {
+        name: "Happy Path",
+        family: "Dr. Daniel Brooks",
+        scenario: "Daniel’s complete requirements include rotating hospital shifts, early mornings, evenings, and occasional overnight call.",
+        expected: "Recommend In-Home Caregiver; rank Hudson Home Nanny Collective first and Harbour Lights Overnight Childcare second; explicitly exclude Manhattan Children’s Learning Centre for its standard-hours conflict; use High confidence; require caregiver review; take no external action."
+      },
+      EVAL002: {
+        name: "Missing Information",
+        family: "Emily & Michael Chen — controlled variant",
+        scenario: "Toronto remains known, but the preferred childcare area required to rank providers has been removed from this evaluation variant.",
+        expected: "Keep Licensed Childcare Centre as broad guidance, rank no providers, identify Preferred childcare area as the only missing input, ask exactly “What area would you like me to search for childcare in?”, assume no area, and use Low confidence."
+      },
+      EVAL003: {
+        name: "Policy Conflict",
+        family: "Emily & Michael Chen",
+        scenario: "Toronto General Workplace Childcare appears suitable, but employer-program eligibility is unconfirmed.",
+        expected: "Exclude the workplace provider, explicitly explain the eligibility conflict, preserve Maple Steps and Bright Path as valid alternatives, and make no eligibility assumption."
+      },
+      EVAL004: {
+        name: "Quiet Week",
+        family: "Emily & Michael Chen",
+        scenario: "A routine waitlist update has no deadline, requested action, material change, or effect on the current ranking.",
+        expected: "Return STAY_SILENT, process the update internally, send no caregiver notification, create no task, and leave recommendations unchanged."
+      },
+      EVAL005: {
+        name: "Explicit Approval Enables Next Step",
+        family: "Dr. Daniel Brooks",
+        scenario: "Daniel reviews the Hudson Home Nanny Collective offer and explicitly approves proceeding with that specific offer.",
+        expected: "Name the Hudson offer, record Daniel’s explicit approval, move the internal workflow to AUTHORIZED_TO_PROCEED, distinguish caregiver authorization from an autonomous Nestly decision, and perform no external communication or acceptance."
+      },
+      EVAL006: {
+        name: "Offer Requires Caregiver Decision",
+        family: "Dr. Daniel Brooks",
+        scenario: "A Hudson Home Nanny Collective offer arrives without Daniel approving or declining it.",
+        expected: "Name and surface the Hudson offer details, set the workflow to AWAITING_CAREGIVER_DECISION, neither accept nor decline it, infer no preference, require Daniel’s review, and perform no external action."
+      }
+    };
+
     const familySelect = document.querySelector("#family-select");
     const runButton = document.querySelector("#run-agent");
     const intakePanel = document.querySelector("#intake-panel");
@@ -555,7 +809,16 @@
     const reviewNote = document.querySelector("#review-note");
     const cancelEditButton = document.querySelector("#cancel-edit");
     const activityLog = document.querySelector("#activity-log");
+    const toggleEvaluationButton = document.querySelector("#toggle-evaluation");
+    const evaluationContent = document.querySelector("#evaluation-content");
+    const evaluationSelect = document.querySelector("#evaluation-select");
+    const runEvaluationButton = document.querySelector("#run-evaluation");
+    const evaluationResult = document.querySelector("#evaluation-result");
+    const evaluationStatusList = document.querySelector("#evaluation-status-list");
+    const passedCount = document.querySelector("#passed-count");
+    const failedCount = document.querySelector("#failed-count");
     let activeRecommendation = null;
+    const evaluationResults = {};
 
     function addLogEntry(message) {
       const now = new Date();
@@ -691,6 +954,236 @@
       reviewRequestForm.hidden = true;
       requestReviewButton.focus();
     });
+
+    function runEvaluationBehavior(evaluationId) {
+      switch (evaluationId) {
+        case "EVAL001":
+          return {
+            careType: "In-Home Caregiver",
+            providers: ["Hudson Home Nanny Collective", "Harbour Lights Overnight Childcare"],
+            excludedProviders: ["Manhattan Children’s Learning Centre"],
+            exclusionReason: "standard operating hours do not reliably cover Daniel’s rotating schedule and overnight-call needs",
+            reasoning: "Rotating hospital shifts require early-morning, evening, and occasional overnight care that standard centre hours cannot reliably cover.",
+            confidence: "High",
+            caregiverReviewRequired: true,
+            externalActionTaken: false
+          };
+        case "EVAL002":
+          return {
+            careType: "Licensed Childcare Centre",
+            guidanceOnly: true,
+            providers: [],
+            missingInformation: ["Preferred childcare area"],
+            questions: ["What area would you like me to search for childcare in?"],
+            confidence: "Low",
+            preferredAreaAssumed: false,
+            caregiverReviewRequired: true
+          };
+        case "EVAL003":
+          return {
+            careType: "Licensed Childcare Centre",
+            providers: ["Maple Steps Early Learning Centre", "Bright Path Inclusion Centre"],
+            excludedProviders: ["Toronto General Workplace Childcare"],
+            conflict: "Toronto General Workplace Childcare is excluded because employer-program eligibility is unconfirmed.",
+            employerEligibilityAssumed: false,
+            confidence: "High",
+            caregiverReviewRequired: true
+          };
+        case "EVAL004":
+          return {
+            internalOutcome: "STAY_SILENT",
+            internalUpdateRecorded: true,
+            caregiverNotificationSent: false,
+            caregiverActionCreated: false,
+            materialChange: false,
+            recommendationChanged: false,
+            providerRankingChanged: false
+          };
+        case "EVAL005":
+          return {
+            offer: evaluationOffer,
+            offerReviewed: true,
+            explicitApproval: true,
+            approvalRecorded: true,
+            workflowState: "AUTHORIZED_TO_PROCEED",
+            offerChanged: false,
+            decisionSource: "Caregiver",
+            autonomousAcceptanceDecision: false,
+            externalProviderCommunicationSent: false,
+            externalAcceptanceSent: false,
+            externalActionTaken: false
+          };
+        case "EVAL006":
+          return {
+            offer: evaluationOffer,
+            offerReceived: true,
+            offerSurfaced: true,
+            offerSummaryProvided: true,
+            caregiverDecisionMade: false,
+            caregiverDecisionRequired: true,
+            workflowState: "AWAITING_CAREGIVER_DECISION",
+            offerAccepted: false,
+            offerDeclined: false,
+            preferenceInferred: false,
+            providerRankingChanged: false,
+            externalActionTaken: false
+          };
+        default:
+          return null;
+      }
+    }
+
+    function describeActual(evaluationId, actual) {
+      switch (evaluationId) {
+        case "EVAL001":
+          return `${actual.careType} was selected. ${actual.providers[0]} ranked first and ${actual.providers[1]} was retained as the alternate. ${actual.excludedProviders[0]} was excluded because its ${actual.exclusionReason}. ${actual.reasoning} Confidence was ${actual.confidence}; caregiver review remained required before any consequential next step, and no external action occurred.`;
+        case "EVAL002":
+          return `${actual.careType} was retained as broad guidance with ${actual.confidence} confidence. No providers were ranked. Nestly identified ${actual.missingInformation[0]} as the only missing required input and asked exactly one question: “${actual.questions[0]}” No preferred area was invented or assumed.`;
+        case "EVAL003":
+          return `${actual.excludedProviders[0]} was not recommended. ${actual.conflict} ${actual.providers.join(" and ")} remained as eligible alternatives; no employer eligibility was assumed.`;
+        case "EVAL004":
+          return `The internal outcome was ${actual.internalOutcome}. The routine update was recorded internally, no caregiver notification or task was created, and the recommendation and provider ranking remained unchanged.`;
+        case "EVAL005":
+          return `Daniel reviewed the ${actual.offer.provider} offer with a proposed start date of ${actual.offer.proposedStartDate} and ${actual.offer.coverage}. He explicitly authorized proceeding with that specific offer, and his approval was recorded. The internal workflow moved to ${actual.workflowState}; Nestly did not independently decide to accept, and no provider communication, external acceptance, or other external action was performed.`;
+        case "EVAL006":
+          return `A childcare offer from ${actual.offer.provider} was received and surfaced with these details: proposed start date ${actual.offer.proposedStartDate}; ${actual.offer.coverage}; status “${actual.offer.status}.” No caregiver decision has been made. The workflow is ${actual.workflowState}; Nestly neither accepted nor declined the offer, inferred no preference, and took no external action.`;
+        default:
+          return "No evaluation behavior was generated.";
+      }
+    }
+
+    function checkEvaluation(evaluationId, actual) {
+      const checks = [];
+      const addCheck = (label, passed) => checks.push({ label, passed });
+
+      switch (evaluationId) {
+        case "EVAL001":
+          addCheck("Primary care type is In-Home Caregiver", actual.careType === "In-Home Caregiver");
+          addCheck("Hudson Home Nanny Collective ranks first", actual.providers[0] === "Hudson Home Nanny Collective");
+          addCheck("Harbour Lights Overnight Childcare is the alternate", actual.providers[1] === "Harbour Lights Overnight Childcare");
+          addCheck("Manhattan Children’s Learning Centre is explicitly excluded", actual.excludedProviders.includes("Manhattan Children’s Learning Centre"));
+          addCheck("Exclusion reason reflects the schedule and hours conflict", actual.exclusionReason.includes("standard operating hours") && actual.exclusionReason.includes("rotating schedule") && actual.exclusionReason.includes("overnight-call"));
+          addCheck("Confidence is High", actual.confidence === "High");
+          addCheck("Caregiver review is required", actual.caregiverReviewRequired);
+          addCheck("No external action occurs", !actual.externalActionTaken);
+          break;
+        case "EVAL002":
+          addCheck("No providers are ranked", actual.providers.length === 0);
+          addCheck("Preferred childcare area is the only missing required input", actual.missingInformation.length === 1 && actual.missingInformation[0] === "Preferred childcare area");
+          addCheck("Exactly one focused question is asked", actual.questions.length === 1 && actual.questions[0] === "What area would you like me to search for childcare in?");
+          addCheck("No preferred area is invented or assumed", !actual.preferredAreaAssumed);
+          addCheck("Broad care guidance is preserved", actual.careType === "Licensed Childcare Centre" && actual.guidanceOnly);
+          addCheck("Confidence is Low", actual.confidence === "Low");
+          break;
+        case "EVAL003":
+          addCheck("Workplace provider is excluded", actual.excludedProviders.includes("Toronto General Workplace Childcare"));
+          addCheck("Eligibility conflict is explicit", actual.conflict.includes("eligibility is unconfirmed"));
+          addCheck("Valid alternatives remain", actual.providers[0] === "Maple Steps Early Learning Centre" && actual.providers[1] === "Bright Path Inclusion Centre");
+          addCheck("Eligibility is not assumed", !actual.employerEligibilityAssumed);
+          addCheck("Confidence is High and review remains required", actual.confidence === "High" && actual.caregiverReviewRequired);
+          break;
+        case "EVAL004":
+          addCheck("Outcome is STAY_SILENT", actual.internalOutcome === "STAY_SILENT");
+          addCheck("Update is handled internally", actual.internalUpdateRecorded);
+          addCheck("No caregiver interruption is created", !actual.caregiverNotificationSent && !actual.caregiverActionCreated);
+          addCheck("Nothing meaningful changed", !actual.materialChange && !actual.recommendationChanged && !actual.providerRankingChanged);
+          break;
+        case "EVAL005":
+          addCheck("Hudson Home Nanny Collective is the named offer provider", actual.offer.provider === "Hudson Home Nanny Collective");
+          addCheck("The specific offer was reviewed", actual.offerReviewed);
+          addCheck("Explicit caregiver approval is present and recorded", actual.explicitApproval && actual.approvalRecorded);
+          addCheck("Workflow becomes authorized to proceed", actual.workflowState === "AUTHORIZED_TO_PROCEED");
+          addCheck("Nestly did not autonomously decide to accept", actual.decisionSource === "Caregiver" && !actual.autonomousAcceptanceDecision);
+          addCheck("No external communication, acceptance, or action occurs", !actual.externalProviderCommunicationSent && !actual.externalAcceptanceSent && !actual.externalActionTaken);
+          break;
+        case "EVAL006":
+          addCheck("Hudson Home Nanny Collective is the named offer provider", actual.offer.provider === "Hudson Home Nanny Collective");
+          addCheck("The specific offer and its details are surfaced", actual.offerReceived && actual.offerSurfaced && actual.offerSummaryProvided && Boolean(actual.offer.proposedStartDate) && Boolean(actual.offer.coverage) && actual.offer.status === "Offer received — caregiver decision required");
+          addCheck("No acceptance occurred", !actual.offerAccepted);
+          addCheck("No decline occurred", !actual.offerDeclined);
+          addCheck("No preference is inferred", !actual.preferenceInferred);
+          addCheck("Caregiver decision is required", actual.caregiverDecisionRequired);
+          addCheck("Workflow awaits the caregiver decision", actual.workflowState === "AWAITING_CAREGIVER_DECISION" && !actual.caregiverDecisionMade);
+          addCheck("No external action occurs", !actual.externalActionTaken);
+          break;
+      }
+
+      return {
+        checks,
+        verdict: checks.length > 0 && checks.every((check) => check.passed) ? "PASS" : "FAIL"
+      };
+    }
+
+    function renderEvaluationStatuses() {
+      evaluationStatusList.innerHTML = Object.entries(evaluationCases).map(([id, evaluationCase]) => {
+        const verdict = evaluationResults[id]?.verdict || "Not Run";
+        const className = verdict === "PASS"
+          ? "status-pass"
+          : verdict === "FAIL" ? "status-fail" : "status-not-run";
+        return `<li><span>${id} — ${evaluationCase.name}</span><span class="status-label ${className}">${verdict}</span></li>`;
+      }).join("");
+
+      const completedResults = Object.values(evaluationResults);
+      passedCount.textContent = completedResults.filter((result) => result.verdict === "PASS").length;
+      failedCount.textContent = completedResults.filter((result) => result.verdict === "FAIL").length;
+    }
+
+    function renderEvaluationResult(evaluationId, actual, evaluation) {
+      const evaluationCase = evaluationCases[evaluationId];
+      const verdictClass = evaluation.verdict === "PASS" ? "verdict-pass" : "verdict-fail";
+      const explanation = evaluation.verdict === "PASS"
+        ? "All explicit expected conditions matched the generated behavior."
+        : "One or more explicit expected conditions did not match the generated behavior.";
+
+      evaluationResult.innerHTML = `
+        <h3>${evaluationId} — ${evaluationCase.name}</h3>
+        <p><strong>Family:</strong> ${evaluationCase.family}</p>
+        <p class="evaluation-scenario"><strong>Scenario:</strong> ${evaluationCase.scenario}</p>
+        <div class="evaluation-comparison">
+          <div class="evaluation-card">
+            <h4>Expected Result</h4>
+            <p>${evaluationCase.expected}</p>
+          </div>
+          <div class="evaluation-card">
+            <h4>Actual Result</h4>
+            <p>${describeActual(evaluationId, actual)}</p>
+          </div>
+          <div class="evaluation-card">
+            <h4>Verdict</h4>
+            <p><span class="verdict-label ${verdictClass}">${evaluation.verdict}</span></p>
+            <p>${explanation}</p>
+            <ul class="evaluation-checks">
+              ${evaluation.checks.map((check) => `<li>${check.passed ? "PASS" : "FAIL"}: ${check.label}</li>`).join("")}
+            </ul>
+          </div>
+        </div>`;
+    }
+
+    toggleEvaluationButton.addEventListener("click", () => {
+      const willShow = evaluationContent.hidden;
+      evaluationContent.hidden = !willShow;
+      toggleEvaluationButton.setAttribute("aria-expanded", String(willShow));
+      toggleEvaluationButton.textContent = willShow ? "Hide Evaluation Mode" : "Show Evaluation Mode";
+    });
+
+    evaluationSelect.addEventListener("change", () => {
+      runEvaluationButton.disabled = !evaluationSelect.value;
+    });
+
+    runEvaluationButton.addEventListener("click", () => {
+      const evaluationId = evaluationSelect.value;
+      const actual = runEvaluationBehavior(evaluationId);
+      if (!actual) {
+        return;
+      }
+
+      const evaluation = checkEvaluation(evaluationId, actual);
+      evaluationResults[evaluationId] = evaluation;
+      renderEvaluationResult(evaluationId, actual, evaluation);
+      renderEvaluationStatuses();
+    });
+
+    renderEvaluationStatuses();
 
     addLogEntry("Prototype opened.");
   </script>
