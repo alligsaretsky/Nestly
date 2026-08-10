@@ -904,6 +904,7 @@
     const passedCount = document.querySelector("#passed-count");
     const failedCount = document.querySelector("#failed-count");
     let activeRecommendation = null;
+    let activeEvaluationId = null;
     const evaluationResults = {};
 
     function addLogEntry(message) {
@@ -1245,6 +1246,20 @@
         </div>`;
     }
 
+    function renderEvaluationSelection(evaluationId) {
+      if (!evaluationId) {
+        evaluationResult.innerHTML = "<p>Select and run a scenario to compare expected and actual behavior.</p>";
+        return;
+      }
+
+      const evaluationCase = evaluationCases[evaluationId];
+      evaluationResult.innerHTML = `
+        <h3>${evaluationId} — ${evaluationCase.name}</h3>
+        <p><strong>Family:</strong> ${evaluationCase.family}</p>
+        <p class="evaluation-scenario"><strong>Scenario:</strong> ${evaluationCase.scenario}</p>
+        <p>Run this evaluation to generate its Actual Result and Verdict.</p>`;
+    }
+
     toggleEvaluationButton.addEventListener("click", () => {
       const willShow = evaluationContent.hidden;
       evaluationContent.hidden = !willShow;
@@ -1253,11 +1268,13 @@
     });
 
     evaluationSelect.addEventListener("change", () => {
-      runEvaluationButton.disabled = !evaluationSelect.value;
+      activeEvaluationId = evaluationSelect.value || null;
+      runEvaluationButton.disabled = !activeEvaluationId;
+      renderEvaluationSelection(activeEvaluationId);
     });
 
     runEvaluationButton.addEventListener("click", () => {
-      const evaluationId = evaluationSelect.value;
+      const evaluationId = activeEvaluationId;
       const actual = runEvaluationBehavior(evaluationId);
       if (!actual) {
         return;
