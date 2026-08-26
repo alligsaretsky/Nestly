@@ -9,4 +9,7 @@
 .env
 
 # Logs
-*.log
+*.log.env.local
+
+.env.local
+.vercel

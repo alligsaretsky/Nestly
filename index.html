@@ -663,7 +663,7 @@
     </section>
 
     <section aria-labelledby="output-heading">
-      <h2 id="output-heading">Provider Recommendations</h2>
+      <h2 id="output-heading">Nestly Recommendations</h2>
 
       <div id="output-panel" aria-live="polite">
         <p>
@@ -992,10 +992,11 @@
 
       decisionPanel.innerHTML = `
         <dl>
-          <dt>Recommendation</dt><dd><strong>${family.recommendation}</strong></dd>
+          <dt>Nestly Recommendation</dt><dd><strong>${family.recommendation}</strong></dd>
           <dt>Reason</dt><dd>${family.reason}</dd>
           <dt>Confidence</dt><dd>${family.confidence}</dd>
-        </dl>`;
+        </dl>
+        <p>Next Step: <a href="#approval-heading"><strong>Caregiver Review Required</strong></a></p>`;
 
       outputPanel.innerHTML = `
         <h3>Recommended Care</h3>
@@ -1008,9 +1009,7 @@
               <p class="provider-location">Location: ${provider.location}</p>
               <p>${provider.reason}</p>
             </li>`).join("")}
-        </ol>
-        <h3>Caregiver Review Required</h3>
-        <p>Review these provider recommendations and approve or request review before Nestly continues.</p>`;
+        </ol>`;
 
       reviewRequestForm.hidden = true;
       reviewNote.value = "";
